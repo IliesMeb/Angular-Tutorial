@@ -1,4 +1,4 @@
-var app = angular.module("tutorialApp", []);
+var app = angular.module("tutorialApp", ["ngSanitize"]);
 
 // // $scope übertragt Daten vom Controller an den View bzw. auch andersrum
 // app.controller("tutorialController", function($scope, $timeout) {
@@ -40,18 +40,70 @@ var app = angular.module("tutorialApp", []);
 // }]);
 // --------------
 
-app.controller("tutorialController",
-function($scope) {
-    $scope.randomNumber = Math.random();
-});
+// app.controller("tutorialController",
+// function($scope) {
+//     $scope.randomNumber = Math.random();
+// });
 
-app.factory("randomNumber", function() {
-    var randomNumber = Math.random();
-    return function() {
-        return randomNumber;
-    }
-});
-app.controller("tutorialController2",
-function($scope, randomNumber) {
-    $scope.randomNumber = randomNumber();
+// app.factory("randomNumber", function() {
+//     var randomNumber = Math.random();
+//     return function() {
+//         return randomNumber;
+//     }
+// });
+// app.controller("tutorialController2",
+// function($scope, randomNumber) {
+//     $scope.randomNumber = randomNumber();
+// });
+
+// ------------------------
+// app.controller("tutorialController",
+// function($scope) {
+//     $scope.title = "";
+// });
+//------------
+
+// app.controller("tutorialController",
+// function($scope) {
+//     $scope.newMember = "";
+//     $scope.members = [
+//         "Mark",
+//         "Peter"
+//     ];
+
+//     $scope.addNewMember = function () {
+//         $scope.members.push($scope.newMember);
+//         $scope.newMember = "";
+//     };
+// });
+// --------------------
+
+// app.controller("tutorialController",
+// function($scope) {
+//     $scope.checked = false;
+// });
+// -----------
+
+// app.controller("tutorialController",
+// function($scope) {
+//     $scope.availableOptions = [
+//         {
+//             "id": "123",
+//             "title": "AngularJS"
+//         },
+//         {
+//             "id": "321",
+//             "title": "NodeJS"
+//         }
+//     ];
+// });
+// ------------------------
+
+// app.controller("tutorialController", function($scope) {
+//     $scope.isBlue = "false";
+// });
+// ---------------------
+
+app.controller("tutorialController", function($scope, $sce) {
+    $scope.description = $sce.trustAsHtml("<p style='color: red'><strong>Hallo</strong> Welt</p>");
 });

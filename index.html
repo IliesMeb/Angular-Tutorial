@@ -4,17 +4,18 @@
         <title>Hallo Angular</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
         <script type="text/javascript" src="app.js"></script>
     </head>
     <body>
-        <!-- <div class="container"> -->
-            <div ng-controller="tutorialController">
-                <!-- ng-model kann bei Formular Elementen benutzt werden -->
-                <!-- <input type="text" ng-model="title" >  -->
-                <!-- Die Veränderbarkeit während dem Schreiben beruht auf 2-way databinding -->
-                <!-- <p>Der Button wurde bisher {{ counter }} geklickt</p> -->
-                <!-- <button class="btn btn-primary" ng-click="incrementCounter()">Klick mich!</button> -->
-                <!-- <button ng-click="notify('Hallo Welt')">Klick mich</button> -->
+        <div class="container">
+            <!-- <div ng-controller="tutorialController">
+                ng-model kann bei Formular Elementen benutzt werden
+                <input type="text" ng-model="title" > 
+                Die Veränderbarkeit während dem Schreiben beruht auf 2-way databinding
+                <p>Der Button wurde bisher {{ counter }} geklickt</p>
+                <button class="btn btn-primary" ng-click="incrementCounter()">Klick mich!</button>
+                <button ng-click="notify('Hallo Welt')">Klick mich</button>
                 {{ randomNumber}}
             </div>
             <div ng-controller="tutorialController">
@@ -25,8 +26,44 @@
             </div>
             <div ng-controller="tutorialController2">
                 {{randomNumber}}
-            </div>
-    
-        <!-- </div>  -->
+            </div> -->
+            <div ng-controller="tutorialController">
+                <!-- <input type="text" ng-model="title"/>
+                <p ng-if="title.length != 0">Anzahl Eingabezeichen: {{ title.length }}</p> -->
+                <!-- <ul>
+                    <li ng-repeat="member in members">{{ member }}</li>
+                </ul>
+                <input type="text" ng-model="newMember">
+                <button class="btn btn-primary" ng-click="addNewMember()" ng-if="newMember != ''">Member hinzufügen</button> -->
+                <!-- <input type="checkbox" ng-model="checked"/>
+                <p ng-if="checked">Die Checkbox ist ausgewählt</p>
+                <p ng-if="!checked">Die Checkbox ist nicht ausgewählt</p> -->
+                <!-- <select class="form-control" ng-model="selected" name="" id="">
+                    <option value="hallo">
+                        Welt
+                    </option>
+                    <option value="hallo2">
+                        Welt2
+                    </option>
+                    <option ng-repeat="c in availableOptions" ng-value="c.id">
+                        {{ c.title }}
+                    </option>
+                </select>
+                {{ selected }}
+                <input type="text" ng-model="selected"> -->
+                <!-- <input type="checkbox" ng-model="isBlue" />
+                <div ng-class="{panel:true, 'panel-default':!isBlue, 'panel-primary': isBlue}">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Ich bin der title
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        Inhalt
+                    </div>
+                </div> -->
+                <div ng-bind-html="description"></div> -> um API's in HTML Code lesen zu können
+            </div>  
+        </div>
     </body>
 </html>
