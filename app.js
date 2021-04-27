@@ -1,4 +1,4 @@
-var app = angular.module("tutorialApp", ["ngSanitize"]);
+var app = angular.module('tutorialApp', ['ngRoute']); //ngSanitize
 
 // // $scope übertragt Daten vom Controller an den View bzw. auch andersrum
 // app.controller("tutorialController", function($scope, $timeout) {
@@ -104,6 +104,65 @@ var app = angular.module("tutorialApp", ["ngSanitize"]);
 // });
 // ---------------------
 
-app.controller("tutorialController", function($scope, $sce) {
-    $scope.description = $sce.trustAsHtml("<p style='color: red'><strong>Hallo</strong> Welt</p>");
+// app.controller("tutorialController", function($scope, $sce) {
+//     $scope.description = $sce.trustAsHtml("<p style='color: red'><strong>Hallo</strong> Welt</p>");
+// });
+// ---------------------
+
+// app.controller("tutorialController", function($scope, $timeout) {
+//     $scope.showPanel = false;
+//     $scope.$watch("showPanel",function(newValue, oldValue) {
+//         if(newValue == true) {
+//             $timeout(function(){
+//                 $scope.showPanel = false;
+//             }, 1000);
+//         };
+//     });
+// });
+// --------------
+
+// app.controller("tutorialController", function($scope) {
+//     $scope.showCities = false;
+//     $scope.cities = [];
+//     $scope.$watch("showCities", function() { 
+//         if ($scope.showCities == true) {
+//             var request = new XMLHttpRequest();
+//             request.onreadystatechange = function() {
+//                 if (request.readyState == 4 && request.status == 200) {
+//                     $scope.cities = JSON.parse(request.responseText);
+//                     $scope.$apply();
+//                 }
+//             };
+//            request.open("GET", "cities.json", "true");
+//            request.send();
+//         }
+//     });
+// });
+// -----------------
+
+// app.controller("tutorialController", function($scope, $http) {
+//         $scope.showCities = false;
+//         $scope.cities = [];
+//         $scope.$watch("showCities", function() { 
+//             if ($scope.showCities == true) {
+//                 $http.get("cities-nichtexistent.json").then(function(data) {
+//                     $scope.cities = data.data;
+//                 }, function(err) {
+//                     alert("Bitte Internetzverbidnung prüfen");
+//                 });
+//             }
+//         });
+//     });
+// --------------
+
+app.config(function($routeProvider) {
+    $routeProvider.when("/start", {
+        templateUrl: "partials/start.html"
+    }).when("/about", {
+        templateUrl: "partials/about.html"
+    });
+});
+
+app.controller("tutorialController", function($scope) {
+
 });
