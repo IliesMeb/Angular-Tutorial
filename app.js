@@ -155,14 +155,28 @@ var app = angular.module('tutorialApp', ['ngRoute']); //ngSanitize
 //     });
 // --------------
 
-app.config(function($routeProvider) {
-    $routeProvider.when("/start", {
-        templateUrl: "partials/start.html"
-    }).when("/about", {
-        templateUrl: "partials/about.html"
+    app.config(function($routeProvider) {
+        $routeProvider.when("/start", {
+            templateUrl: "partials/start.html",
+            controller: "StartController"
+        }).when("/start/:name/:age", {
+            templateUrl: "partials/start.html",
+            controller: "StartController"
+        }).when("/about", {
+            templateUrl: "partials/about.html"
+        }).when("/about2", {
+            template: "<h3>about2</h3>"
+        }).otherwise({
+            redirectTo:"/start"
+        });
     });
-});
 
-app.controller("tutorialController", function($scope) {
+    app.controller("StartController", function($scope, $routeParams) {
+        $scope.title = "StartController:" + $routeParams.name;
+        $scope.age = $routeParams.age;
+        console.log($routeParams);
+    });
 
-});
+    app.controller("tutorialController", function($scope) {
+
+    });
