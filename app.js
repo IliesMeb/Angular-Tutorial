@@ -155,6 +155,34 @@ var app = angular.module('tutorialApp', ['ngRoute']); //ngSanitize
 //     });
 // --------------
 
+//     app.config(function($routeProvider) {
+//         $routeProvider.when("/start", {
+//             templateUrl: "partials/start.html",
+//             controller: "StartController"
+//         }).when("/start/:name/:age", {
+//             templateUrl: "partials/start.html",
+//             controller: "StartController"
+//         }).when("/about", {
+//             templateUrl: "partials/about.html"
+//         }).when("/about2", {
+//             template: "<h3>about2</h3>"
+//         }).otherwise({
+//             redirectTo:"/start"
+//         });
+//     });
+
+//     app.controller("StartController", function($scope, $routeParams) {
+//         $scope.title = "StartController:" + $routeParams.name;
+//         $scope.age = $routeParams.age;
+//         console.log($routeParams);
+//     });
+
+//     app.controller("tutorialController", function($scope) {
+
+//     });
+
+// ------------------
+
     app.config(function($routeProvider) {
         $routeProvider.when("/start", {
             templateUrl: "partials/start.html",
@@ -171,12 +199,34 @@ var app = angular.module('tutorialApp', ['ngRoute']); //ngSanitize
         });
     });
 
+    app.directive("tutorialPanel", function() {
+        return {
+            // restrict: "EAC",
+            templateUrl: "partials/panel.html",
+            scope: {
+                //panelTitle: "@" ist eine textübergabe = read only
+                panelTitle: "=", //ist eine Objektüberabe = speichern
+                course: "=",
+                onSubmit: "&" // ist eine function
+            },
+            transclude: true
+        };
+    });
+
     app.controller("StartController", function($scope, $routeParams) {
         $scope.title = "StartController:" + $routeParams.name;
-        $scope.age = $routeParams.age;
+        $scope.course = {
+            title: "AngularJS",
+            desc: "AngularJS Kurs"
+        };
+        $scope.onSubmitButton = function(message) {
+            alert(message);
+        };
         console.log($routeParams);
     });
 
     app.controller("tutorialController", function($scope) {
 
     });
+
+
